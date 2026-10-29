@@ -1,12 +1,533 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yandi Hermawan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yandi Hermawan | Business Data Analyst Portfolio</title>
+  
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header Profile */
+    header {
+      text-align: center;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    header .subtitle {
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-links a, .contact-item {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover {
+      color: var(--accent);
+    }
+
+    .contact-links i {
+      color: var(--accent);
+    }
+
+    /* Section Cards */
+    section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    section h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    section h2 i {
+      color: var(--accent);
+    }
+
+    /* Summary */
+    .summary-text {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-category h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: #e0f2fe;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 400;
+    }
+
+    /* Timeline items (Education, Experience) */
+    .item {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .item-sub {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .item-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.15rem 0.6rem;
+      border-radius: 12px;
+    }
+
+    .item-details {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .item-details ul {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+    }
+
+    .item-details li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* References Grid */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .ref-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .ref-name {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .ref-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .ref-card a {
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem 0.5rem; }
+      header { padding: 1.5rem 1rem; }
+      section { padding: 1.25rem; }
+      .item-header { flex-direction: column; gap: 0.1rem; }
+      .ref-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Yandi Hermawan</h1>
-  <p>Website portfolio sedang dibangun.</p>
+
+  <div class="container">
+    
+    <!-- HEADER / HERO -->
+    <header>
+      <h1>Yandi Hermawan</h1>
+      <p class="subtitle">Business Data Analyst</p>
+      
+      <div class="contact-links">
+        <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Bogor, Indonesia</span>
+        <a href="tel:088213200455"><i class="fa-solid fa-phone"></i> 0882 1320 0455</a>
+        <a href="mailto:yandi.h.m@gmail.com"><i class="fa-solid fa-envelope"></i> yandi.h.m@gmail.com</a>
+        <a href="https://linkedin.com/in/yandihermawan" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/yandiher" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </header>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <section>
+      <h2><i class="fa-solid fa-user"></i> Professional Summary</h2>
+      <p class="summary-text">
+        A highly motivated Binaniaga University of Indonesia graduate majoring in Business Management. My strong problem-solving and analytical thinking, advanced knowledge of applied machine learning and statistics, and excellent understanding of Python and SQL have prepared me to become a professional business data analyst. I am eager to leverage my skills for data-driven decision-making and contribute to organizational success.
+      </p>
+    </section>
+
+    <!-- SKILLS & EXPERTISE -->
+    <section>
+      <h2><i class="fa-solid fa-gears"></i> Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Analytics</h3>
+          <div class="tag-cloud">
+            <span class="tag">Statistical Analysis</span>
+            <span class="tag">Time Series</span>
+            <span class="tag">Regression Analysis</span>
+            <span class="tag">Classification</span>
+            <span class="tag">Clustering</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">NLP</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Toolkits</h3>
+          <div class="tag-cloud">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Google Data Studio</span>
+            <span class="tag">SPSS</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">MS Excel</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Database & SQL</h3>
+          <div class="tag-cloud">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">BigQuery</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">ETL</span>
+            <span class="tag">Database Design</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Interpersonal</h3>
+          <div class="tag-cloud">
+            <span class="tag">English (Spoken & Written)</span>
+            <span class="tag">Collaboration</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Problem-Solving</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & VOLUNTEERING -->
+    <section>
+      <h2><i class="fa-solid fa-briefcase"></i> Experience & Volunteering</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Technical Operations</div>
+            <div class="item-sub">PT. Putra Mulia Telecommunication</div>
+          </div>
+          <div class="item-date">Jun 2021 - Aug 2023</div>
+        </div>
+        <div class="item-details">
+          <ul>
+            <li>Monitored network health and performance, including preventing stolen cases.</li>
+            <li>Investigated and resolved BTS service failure, collaborating with technical engineers to restore service and prevent recurrence.</li>
+            <li>Generated and presented visual reports on BTS downtime to key stakeholders, ensuring accurate documentation in the database management system.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">English Tutor</div>
+            <div class="item-sub">Yayasan Cipta Mandiri</div>
+          </div>
+          <div class="item-date">Jun 2018 - Present</div>
+        </div>
+        <div class="item-details">
+          <ul>
+            <li>Bridge cultural gaps between international teachers and local students through meaningful interactions.</li>
+            <li>Provide an effective and engaging learning experience to maximize student learning outcomes.</li>
+            <li>Deliver personal development lessons using English as a main language to senior high school students.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Proyek Masa Depan Scholarship</div>
+            <div class="item-sub">Die Brücke – German Foundation</div>
+          </div>
+          <div class="item-date">Jun 2018 - Dec 2021</div>
+        </div>
+        <div class="item-details">
+          <ul>
+            <li>President – Proyek Masa Depan Scholarship</li>
+            <li>Project Officer – PMD Scholarship Birthday</li>
+            <li>Secretary – Social Event at Sekolah Ricci Jakarta</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2><i class="fa-solid fa-graduation-cap"></i> Education & Certifications</h2>
+      
+      <h3 style="font-size: 0.95rem; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase;">Formal Education</h3>
+      
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Business Management</div>
+            <div class="item-sub">Binaniaga University of Indonesia</div>
+          </div>
+          <div class="item-date">May 2023</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Information Technology</div>
+            <div class="item-sub">SMKN 2 Bogor</div>
+          </div>
+          <div class="item-date">June 2013</div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 0.95rem; color: var(--accent); margin: 1.5rem 0 1rem 0; text-transform: uppercase;">Informal & Certifications</h3>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Data Scientist</div>
+          <div class="item-sub">Dicoding</div>
+        </div>
+        <div class="item-date">Nov 2023 - May 2024</div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">The Complete Financial Analyst Course</div>
+          <div class="item-sub">Udemy</div>
+        </div>
+        <div class="item-date">Present</div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">The Element of Data Science</div>
+          <div class="item-sub">AWS Training and Certification</div>
+        </div>
+        <div class="item-date">April 2024</div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Business Data Analytics & Intelligence with Python</div>
+          <div class="item-sub">Udemy</div>
+        </div>
+        <div class="item-date">April 2023</div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Python for Data Science and Machine Learning Bootcamp</div>
+          <div class="item-sub">Udemy</div>
+        </div>
+        <div class="item-date">March 2023</div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">AWS Innovate Data and AI/ML Edition</div>
+          <div class="item-sub">AWS</div>
+        </div>
+        <div class="item-date">February 2023</div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Machine Learning / Business Analytics / Data Science</div>
+          <div class="item-sub">Simplilearn</div>
+        </div>
+        <div class="item-date">Jan - Feb 2022</div>
+      </div>
+    </section>
+
+    <!-- CHARACTER REFERENCES -->
+    <section>
+      <h2><i class="fa-solid fa-address-book"></i> Character References</h2>
+
+      <div class="ref-grid">
+        <div class="ref-card">
+          <div class="ref-name">Ann Rendell</div>
+          <div class="ref-role">Australian Volunteer</div>
+          <a href="mailto:ann.rendell76@gmail.com"><i class="fa-solid fa-envelope"></i> ann.rendell76@gmail.com</a>
+        </div>
+      
+        <div class="ref-card">
+          <div class="ref-name">Abdul Kohar</div>
+          <div class="ref-role">Coordinator of Yayasan Cipta Mandiri</div>
+          <a href="mailto:kohar.ciptamandiri@gmail.com"><i class="fa-solid fa-envelope"></i> kohar.ciptamandiri@gmail.com</a>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-name">Anne Kallmann</div>
+          <div class="ref-role">Supervisor of PMD Scholarship</div>
+          <a href="mailto:anne_kallman@web.de"><i class="fa-solid fa-envelope"></i> anne_kallman@web.de</a>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-name">Agus Firmansyah</div>
+          <div class="ref-role">Service Manager of PT. PMT (JABO-2)</div>
+          <a href="mailto:agus.f@pmt.co.id"><i class="fa-solid fa-envelope"></i> agus.f@pmt.co.id</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; Yandi Hermawan. Hosted on GitHub Pages.</p>
+    </footer>
+
+  </div>
+
 </body>
 </html>
